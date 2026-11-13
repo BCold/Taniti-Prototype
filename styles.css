@@ -1,0 +1,339 @@
+
+    @import url('https://fonts.googleapis.com/css2?family=Zen+Loop&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Basic&display=swap');  
+
+* {
+    box-sizing: border-box;
+    font-family: 'Basic', sans-serif;
+}
+
+a, a:visited {
+    text-decoration: none;
+    display: inline-block;
+}
+header a, 
+header a:visited {
+    color: white;
+}
+a:hover{
+    cursor: pointer;
+    translate: 0 -2px;
+}
+a:focus {
+    transform: scale(0.95);
+}
+.category-txt:hover{
+    translate: 0 -1px;
+}
+.category-txt:focus {
+    transform: translate(-50%, -50%) scale(0.95);
+}
+
+h1 {
+    color: #3E8EDE;
+    text-shadow: 0 -00.25 0.25em black;
+    text-align: center;
+    margin: 0;
+    padding: 0.5em;
+}
+nav {
+    text-align: center;
+}
+nav ul{
+    background-color: #3E8EDE;
+    box-shadow: inset 0 0 0.25em #fffcd4;
+    border-radius: 0.5em;
+    margin: auto;
+    padding: 0.5em 2em 0.25em 2em;
+    width: 66%;
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    grid-template-rows: auto;
+    list-style-type: none;
+    justify-content:space-between;
+
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+}
+
+#active-page {
+    border-bottom: 0.25em solid white;
+}
+#active-page:hover {
+    pointer-events: none;
+    cursor: unset;
+}
+
+body {
+    overflow-y: scroll;
+    margin: 0 auto 0 auto;
+    width: 85%;
+    background-image: radial-gradient(circle,#fffcd4 40%, #dbebf5);
+}
+
+main {
+    margin: 1em;
+}
+#carousel {
+    margin: 0;
+    padding-left: 0;
+    list-style-type: none;
+    scroll-behavior: smooth;
+
+    /* Carousel Functionality Code */
+    display: flex;  /*  Creates a single, non-wrapping row on <li> elements */
+    gap: 4vw;
+    /* align-items: center; */
+    overflow-x: auto; /* This ensures that if items overflow the container on the x-axis, the content will scroll horizontally */
+    overscroll-behavior-x: contain;/* Prevents scrolling from continuing outside the container, "Bounce" effects may still occur */
+    scroll-snap-type: x mandatory; /* The container snaps to positions on the horizontal axis (x), the viewport must snap to a position if it isn't currently (mandatory) */
+    scroll-marker-group: after; /* This places the group after the list's DOM content in tabbing order and layout box order; meaning it comes after the scrolls buttons */
+    scrollbar-width: none;
+    /* Anchoring buttons to carousel */
+    anchor-name: --hero-carousel;
+}
+#carousel::scroll-button(*) {
+    border: 0;
+    font-size: 15em;
+    font-weight: bold;
+    background: none;
+    color: #3E8EDE;
+    cursor: pointer;
+
+    /* Anchoring buttons to carousel */
+    position: absolute;
+    position-anchor: --hero-carousel;
+    align-self: anchor-center;
+}
+#carousel::scroll-button(*):hover,
+#carousel::scroll-button(*):focus {
+    opacity: 1;
+}
+#carousel::scroll-button(*):active {
+    translate: 1px 1px;
+}
+#carousel::scroll-button(*):disabled{
+    opacity: 0.25;
+    cursor: unset;
+}
+#carousel::scroll-button(left){
+    content: "‹";
+    right: calc(anchor(left) + 4px);
+}
+#carousel::scroll-button(right) {
+    content: "›";
+    left: calc(anchor(right) + 4px);
+}
+
+#carousel::scroll-marker-group {
+    /* Centers container children inside the group, adding a gap between each one. */
+    display: flex;
+    justify-content: center;
+    gap: 0.5em;
+    position: relative;
+    z-index: 2;
+    top: -2em;
+    
+}
+.carousel-item {
+    flex: 0 0 100%;
+    scroll-snap-align: start;  /* Causes the left-hand side of the left-most visible item to snap to the left edge of the container when content is scrolled */
+}
+.carousel-item::scroll-marker {
+    width: 1em;
+    height: 1em;
+    background-color: transparent;
+    border: 0.25em solid #3E8EDE;
+    border-radius: 50%;
+    content: "";
+}
+.carousel-item::scroll-marker:target-current {
+    background-color: #3E8EDE;
+}
+.carousel-item, #hero-container {
+    border-radius: 0.5em;
+    position: relative;
+    box-shadow: inset 0 0 0.5em #fffcd4;
+
+}
+.carousel-item > img, #hero,.category-container > img {
+    position: relative;
+    z-index: -1;
+    border-radius: 0.5em;
+    width: 100%;
+    display: block;
+}
+.carousel-item-txt, #hero-txt {
+    box-shadow: -0.75em -0.5em 2em black;
+    background-color: rgba(255, 255, 255, 0.9);
+    width: fit-content;
+    max-width: 90%;
+    padding: 1em;
+    border-top-left-radius: 1em;
+    border-bottom-left-radius: 1em;
+    font-size: 20px;
+    font-weight: 500;
+    position: absolute;
+    bottom: 1em;
+    right: 0em;
+    color: #3E8EDE;
+}
+
+.img-grid {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: auto;
+    column-gap: 1em;
+    width: 66%;
+    margin: 0 auto 2em auto;
+    align-items: center;
+}
+
+#home-img-grid {
+    grid-template-columns: auto auto auto;
+    grid-template-rows: auto;
+    width: 97%;
+
+}
+.category-container {
+    box-shadow: inset 0 0 0.5em #fffcd4;
+    margin: auto;
+    position: relative;
+}
+.category-txt {
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 0.5em;
+    margin: 0;
+    border-radius: 1em;
+    font-size: 2em;
+    font-weight: 600;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    color: #3E8EDE;
+}
+.category-txt > p {
+    margin: 0;
+}
+
+footer {
+    margin: 6em 1em 1em 1em;
+}
+footer h2 {
+    box-shadow: inset 0 0 0.25em #fffcd4;
+    padding: 0.25em 0.25em 0.25em 0.75em;
+    margin-bottom: 0;
+    color: white;
+    background-color: #3E8EDE;
+    border-radius: 0.5em 0.5em 0 0;
+}
+footer > ul {
+    margin-top: 0;
+    background-color: white;
+    border-radius: 0 0 0.5em 0.5em;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+}
+footer ul li::marker {
+    color: #3E8EDE;
+}
+footer a {
+    color: #3E8EDE;
+}
+
+
+@media screen and (min-width: 1600px) {
+    body {
+        width: 76.5%;
+    }
+    
+}
+@media screen and (min-width: 1920px) {
+    body {
+        width: 65%;
+    }
+    
+    .carousel-item-txt, #hero-txt {
+        max-width: 80%;
+    }
+}
+
+@media screen and (min-width: 2560px) {
+    body {
+        width: 50%;
+    }
+}
+@media screen and (max-width: 1210px) {
+    nav ul {
+        position: sticky;
+        top: 0;
+        border-radius: 0;
+        font-size: 32px;
+        width: 100%;
+    }
+    body {
+        width: 100%;
+    }
+    main {
+        margin: 1em auto 1em auto;
+    }
+    #carousel-container {
+        margin: auto;
+        margin-bottom: 3.5em;
+    }
+
+    #carousel{
+        margin: auto;
+        width: 100%;
+    }
+    .carousel-item > img{
+        margin-bottom: 6.5em;
+        border-radius: 0.5em 0.5em 0 0;
+    }
+    .carousel-item-txt, #hero-txt {
+        background-color:white;
+        box-shadow: none;
+        margin: 0;
+        max-height: 100%;
+        max-width: 100%;
+        bottom: 0;
+        font-size: 24px;
+        border-radius: 0 0 1em 1em;
+    }
+    #carousel::scroll-button(*) {
+        display: none;
+    }
+    #carousel::scroll-marker-group {
+        top: 0.3em;
+    }
+    .carousel-item::scroll-marker { 
+        width: 2.5em;
+        height: 2.5em;
+    }
+    #hero-container  {
+        margin: 0 auto 13em auto;
+        width: 100%;
+    }
+    #hero-txt {
+        bottom: -7em;
+    }
+    .img-grid {
+        width: 90%;
+        grid-template-columns: auto;
+        grid-template-rows: auto auto;
+        gap: 1em;
+    }
+    #home-img-grid {
+        width: 90%;
+        grid-template-columns: auto;
+        grid-template-rows: auto auto auto;
+    }
+
+    .category-txt {
+        font-size: 48px;
+    }
+}
