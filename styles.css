@@ -244,29 +244,12 @@ footer ul li::marker {
 footer a {
     color: #3E8EDE;
 }
-
-
-@media screen and (min-width: 1600px) {
-    body {
-        width: 76.5%;
-    }
-    
-}
-@media screen and (min-width: 1920px) {
-    body {
-        width: 65%;
-    }
-    
-    .carousel-item-txt, #hero-txt {
-        max-width: 80%;
-    }
+footer a:hover {
+    translate: none;
+    color: #dbebf5;
 }
 
-@media screen and (min-width: 2560px) {
-    body {
-        width: 50%;
-    }
-}
+
 @media screen and (max-width: 1210px) {
     nav ul {
         position: sticky;
@@ -335,5 +318,32 @@ footer a {
 
     .category-txt {
         font-size: 48px;
+    }
+    footer h2 {
+        text-align: center;
+        font-size: 48px;
+    }
+    footer a {
+        font-size: 32px;
+    }
+}
+@media screen and (min-width: 1600px) {
+    body {
+        width: 76.5%;
+    } 
+}
+@media screen and (min-width: 1920px) {
+    body {
+        width: 65%;
+    }
+    
+    .carousel-item-txt, #hero-txt {
+        max-width: 80%;
+    }
+}
+
+@media screen and (min-width: 2560px) {
+    body {
+        width: 50%;
     }
 }
