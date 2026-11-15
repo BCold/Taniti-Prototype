@@ -179,6 +179,9 @@ main {
     right: 0em;
     color: #3E8EDE;
 }
+.note {
+    font-weight: 600;
+}
 
 .img-grid {
     display: grid;
